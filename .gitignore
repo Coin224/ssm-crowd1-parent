@@ -1,0 +1,4 @@
+# Project exclude paths
+/ssm-crowd2-entity/target/
+/ssm-crowd3-component/target/
+/ssm-crowd4-webui/target/
