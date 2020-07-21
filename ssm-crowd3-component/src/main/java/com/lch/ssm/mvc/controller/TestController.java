@@ -2,7 +2,7 @@ package com.lch.ssm.mvc.controller;
 
 import com.lch.ssm.service.api.AdminService;
 
-import com.lch.ssm.util.ReqTypeUtil;
+import com.lch.ssm.util.CrowdUtil;
 import com.lch.ssm.util.ResultEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,7 +65,7 @@ public class TestController {
     @RequestMapping("/send/three")
     @ResponseBody
     public ResultEntity<List<Integer>> receiveArr3(@RequestBody List<Integer> array , HttpServletRequest request) {
-        boolean reqType = ReqTypeUtil.judgeReqType(request);
+        boolean reqType = CrowdUtil.judgeReqType(request);
         logger.info("ReqTYPE=" + reqType);
         for (Integer integer : array) {
             logger.info("number=="+integer);

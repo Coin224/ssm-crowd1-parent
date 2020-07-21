@@ -12,5 +12,6 @@
 </head>
 <body>
 welcome
+<p>${sessionScope.loginAdmin}</p>
 </body>
 </html>

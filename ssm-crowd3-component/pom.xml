@@ -11,6 +11,18 @@
 
     <artifactId>ssm-crowd3-component</artifactId>
     <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>7</source>
+                    <target>7</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -18,11 +30,7 @@
             <artifactId>ssm-crowd2-entity</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>com.lch.ssm</groupId>
-            <artifactId>ssm-crowd5-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+
 
 
         <dependency>
@@ -100,6 +108,11 @@
             <artifactId>gson</artifactId>
         </dependency>
 
+        <!--mybatis分页插件-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
 
     </dependencies>
 

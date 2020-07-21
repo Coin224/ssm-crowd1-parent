@@ -19,10 +19,30 @@
     <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
         <property name="dataSource" ref="dataSource"/>
+
+        <!--配置分页插件-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <props>
+                            <!--配置数据库方言-->
+                            <prop key="dialect">mysql</prop>
+                            <!--配置页码合理化修正-->
+                            <prop key="reasonable">true</prop>
+                        </props>
+                    </property>
+                </bean>
+            </array>
+        </property>
     </bean>
 
     <!--扫描mapper接口装配到IOC容器-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.lch.ssm.mapper"/>
     </bean>
+
+
+
+    
 </beans>

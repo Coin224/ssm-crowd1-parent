@@ -1,7 +1,10 @@
 package com.lch.ssm.mvc.exception;
 
 import com.google.gson.Gson;
-import com.lch.ssm.util.ReqTypeUtil;
+import com.lch.ssm.mvc.exception.myexception.AccessForbiddenException;
+import com.lch.ssm.mvc.exception.myexception.LoginAcctDuplicateKeyException;
+import com.lch.ssm.mvc.exception.myexception.LoginException;
+import com.lch.ssm.util.CrowdUtil;
 import com.lch.ssm.util.ResultEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,6 +25,32 @@ import java.io.PrintWriter;
 @ControllerAdvice//表示当前类是一个异常处理类
 public class ExceptionResolver {
 
+    @ExceptionHandler(AccessForbiddenException.class)
+    public ModelAndView resolveAccessForbidden(AccessForbiddenException exception,
+                                         HttpServletRequest request,
+                                         HttpServletResponse response) throws IOException {
+        String viewName = "admin-login";
+        return commonResolve(viewName, exception, request, response);
+    }
+
+    @ExceptionHandler(LoginAcctDuplicateKeyException.class)
+    public ModelAndView resolveLoginAcctDuplicate(LoginAcctDuplicateKeyException exception,
+                                               HttpServletRequest request,
+                                               HttpServletResponse response) throws IOException {
+        String viewName = "system-error";
+        return commonResolve(viewName, exception, request, response);
+    }
+
+
+    @ExceptionHandler(RuntimeException.class)
+    public ModelAndView resolveAccessForbidden(RuntimeException exception,
+                                               HttpServletRequest request,
+                                               HttpServletResponse response) throws IOException {
+        String viewName = "system-error";
+        return commonResolve(viewName, exception, request, response);
+    }
+
+
     @ExceptionHandler(NullPointerException.class)
     public ModelAndView resolveNullPoint(NullPointerException exception,
                                          HttpServletRequest request,
@@ -30,8 +59,17 @@ public class ExceptionResolver {
         return commonResolve(viewName, exception, request, response);
     }
 
+    @ExceptionHandler(LoginException.class)
+    public ModelAndView resolveLogin(LoginException exception,
+                                         HttpServletRequest request,
+                                         HttpServletResponse response) throws IOException {
+        String viewName = "admin-login";
+        return commonResolve(viewName, exception, request, response);
+    }
+
+
     @ExceptionHandler(ArithmeticException.class)
-    public ModelAndView resolveNullPoint(ArithmeticException exception,
+    public ModelAndView resolveArithmetic(ArithmeticException exception,
                                          HttpServletRequest request,
                                          HttpServletResponse response) throws IOException {
         String viewName = "system-error";
@@ -44,7 +82,7 @@ public class ExceptionResolver {
                                        HttpServletRequest request,
                                        HttpServletResponse response) throws IOException {
         // 1.判断请求的类型
-        boolean reqType = ReqTypeUtil.judgeReqType(request);
+        boolean reqType = CrowdUtil.judgeReqType(request);
         // 2.ajax请求异常处理
         if (reqType) {
             // 2.1 获取异常的消息

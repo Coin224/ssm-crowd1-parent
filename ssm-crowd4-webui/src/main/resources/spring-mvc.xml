@@ -20,16 +20,33 @@
     </bean>
 
     <!--异常映射-->
-<!--    <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
-<!--        &lt;!&ndash;配置异常类型和对应页面的具体关系&ndash;&gt;-->
-<!--        <property name="exceptionMappings">-->
-<!--            <props>-->
-<!--                <prop key="java.lang.Exception">system-error</prop>-->
-<!--            </props>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--配置异常类型和对应页面的具体关系-->
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">system-error</prop>
+
+                <prop key="com.lch.ssm.mvc.exception.myexception.AccessForbiddenException">admin-login</prop>
+            </props>
+        </property>
+    </bean>
 
 
     <!--配置视图跳转-->
     <mvc:view-controller path="/admin/loginpage" view-name="admin-login"/>
+    <mvc:view-controller path="/admin/mainpage" view-name="admin-main"/>
+    <mvc:view-controller path="/admin/add" view-name="admin-add"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--配置需要拦截的路径-->
+            <mvc:mapping path="/**"/>
+            <!--配置不需要拦截的路径-->
+            <mvc:exclude-mapping path="/admin/loginpage"/>
+            <mvc:exclude-mapping path="/admin/login"/>
+            <mvc:exclude-mapping path="/admin/logout"/>
+            <!--绑定拦截器-->
+            <bean id="loginIntercepter" class="com.lch.ssm.mvc.intercepter.LoginIntercepter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

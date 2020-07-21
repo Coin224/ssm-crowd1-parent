@@ -19,9 +19,18 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/login.css">
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <style>
 
     </style>
+    <script type="text/javascript">
+        $(function () {
+            $("#btnToBack").click(function () {
+                window.history.back();
+            });
+        })
+    </script>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -39,9 +48,8 @@
             </i> 系统消息
         </h2>
         <h3 style="text-align: center">${requestScope.exception.message}</h3>
-        <button type="submit" class="btn btn-lg btn-success btn-block" style="width:150px;margin: 50px auto 0px auto;">返回上一页</button>
+        <button id="btnToBack" class="btn btn-lg btn-success btn-block" style="width:150px;margin: 50px auto 0px auto;">返回上一页</button>
 </div>
-<script src="jquery/jquery-2.1.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>
