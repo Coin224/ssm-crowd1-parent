@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * @create 2020-07-17 19:58
  */
 @Controller()
-public class LoginController {
+public class AdminController {
 
 
     @Autowired
@@ -46,9 +46,9 @@ public class LoginController {
 
     @RequestMapping("/admin/manage")
     public String adminManage(@RequestParam(value = "keyword" ,defaultValue = "") String keyword,
-                              @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
-                              @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
-                              Model modelMap) {
+                                   @RequestParam(value = "pageNum",defaultValue = "1") Integer pageNum,
+                                   @RequestParam(value = "pageSize",defaultValue = "10") Integer pageSize,
+                                   Model modelMap) {
         PageInfo<Admin> pageInfo = adminService.getPageInfo(keyword, pageNum, pageSize);
         modelMap.addAttribute("pageInfo",pageInfo);
         return "admin-manage";

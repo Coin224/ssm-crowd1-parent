@@ -19,15 +19,13 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/login.css">
-    <style>
 
-    </style>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header" >
-            <div style="text-align: center"><a class="navbar-brand" href="index.html" style="font-size:32px;">尚筹网-创意产品众筹平台</a></div>
+            <div ><a class="navbar-brand" href="index.html" style="text-align:center;font-size:32px;">尚筹网-创意产品众筹平台</a></div>
         </div>
     </div>
 </nav>

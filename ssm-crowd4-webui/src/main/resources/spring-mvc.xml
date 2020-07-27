@@ -36,6 +36,8 @@
     <mvc:view-controller path="/admin/loginpage" view-name="admin-login"/>
     <mvc:view-controller path="/admin/mainpage" view-name="admin-main"/>
     <mvc:view-controller path="/admin/add" view-name="admin-add"/>
+    <mvc:view-controller path="/role/to/page" view-name="role-manage"/>
+    <mvc:view-controller path="/menu/to/page" view-name="menu-manage"/>
 
     <mvc:interceptors>
         <mvc:interceptor>

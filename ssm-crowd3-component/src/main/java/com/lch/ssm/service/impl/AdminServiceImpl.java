@@ -30,9 +30,6 @@ public class AdminServiceImpl implements AdminService {
     private AdminMapper adminMapper;
 
 
-
-
-
     @Override
     public int updateAdmin(Admin admin) {
 

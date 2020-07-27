@@ -1,5 +1,7 @@
 import com.lch.ssm.entity.Admin;
+import com.lch.ssm.entity.Role;
 import com.lch.ssm.mapper.AdminMapper;
+import com.lch.ssm.mapper.RoleMapper;
 import com.lch.ssm.service.api.AdminService;
 import com.lch.ssm.util.CrowdUtil;
 import org.junit.Test;
@@ -24,6 +26,7 @@ public class TestMain {
 
     @Autowired
     private AdminService adminService;
+
 
     @Test
     public void t1() {
@@ -68,5 +71,16 @@ public class TestMain {
     public void t6() {
         RuntimeException runtimeException = new RuntimeException("不准删自己！！！");
         System.out.println(runtimeException.getMessage());
+    }
+
+    @Autowired
+    private RoleMapper roleMapper;
+
+    @Test
+    public void t7() {
+        for (int i = 0; i < 300 ; i++) {
+            Role role = new Role(null,"研发"+i);
+            roleMapper.insert(role);
+        }
     }
 }
