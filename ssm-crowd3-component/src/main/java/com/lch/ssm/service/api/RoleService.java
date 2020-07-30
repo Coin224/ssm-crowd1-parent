@@ -18,4 +18,10 @@ public interface RoleService {
     void editRole(Role role);
 
     void removeRole(List<Integer> id);
+
+    List<Role> findAssignedRoles(Integer adminId);
+
+    List<Role> findUnAssignedRoles(Integer adminId);
+
+    void saveRoleToAdmin(Integer adminId, List<Integer> roleIdList);
 }

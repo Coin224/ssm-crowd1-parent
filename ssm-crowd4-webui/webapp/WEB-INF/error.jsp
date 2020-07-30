@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
-<%@include file="/WEB-INF/include-head.jsp" %>
+<%@include file="/WEB-INF/include/include-head.jsp" %>
 <body>
-<%@include file="/WEB-INF/include-nav.jsp" %>
+<%@include file="/WEB-INF/include/include-nav.jsp" %>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

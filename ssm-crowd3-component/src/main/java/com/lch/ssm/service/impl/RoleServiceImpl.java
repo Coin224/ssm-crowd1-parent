@@ -52,4 +52,26 @@ public class RoleServiceImpl implements RoleService {
 
         roleMapper.deleteByExample(roleExample);
     }
+
+    @Override
+    public List<Role> findAssignedRoles(Integer adminId) {
+        return roleMapper.findAssignedRoles(adminId);
+    }
+
+    @Override
+    public List<Role> findUnAssignedRoles(Integer adminId) {
+        return roleMapper.findUnAssignedRoles(adminId);
+    }
+
+    @Override
+    public void saveRoleToAdmin(Integer adminId, List<Integer> roleIdList) {
+        // 先删除原来的admin的角色
+        roleMapper.deleteOldRoleByAdminId(adminId);
+        // 添加新的admin的角色
+
+        if (roleIdList != null && roleIdList.size() > 0) {
+            roleMapper.saveNewRoleToAdmin(adminId,roleIdList);
+        }
+
+    }
 }

@@ -86,7 +86,9 @@ public class AdminController {
         return "admin-update";
     }
     @RequestMapping("/admin/update")
-    public String doUpdateAdmin(Admin admin,@RequestParam("pageNum") Integer pageNum,@RequestParam("keyword") String keyword) {
+    public String doUpdateAdmin(Admin admin,
+                                @RequestParam("pageNum") Integer pageNum,
+                                @RequestParam("keyword") String keyword) {
         adminService.updateAdmin(admin);
         return "redirect:/admin/manage?pageNum="+pageNum+"&keyword="+keyword;
     }

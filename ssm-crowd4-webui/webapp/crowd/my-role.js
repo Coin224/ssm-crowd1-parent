@@ -104,7 +104,7 @@ function fillTableBody(pageInfo) {
         var numberTd = "<td>"+(i+1)+"</td>";
         var checkboxTd = "<td><input id='"+roleId+"' class='itemBox' type='checkbox' ></td>";
         var roleNameTd = "<td>"+roleName+"</td>";
-        var checkBtn = "<button type='button' class='btn btn-success btn-xs'><i class=' glyphicon glyphicon-check'></i></button>";
+        var checkBtn = "<button id='"+roleId+"' type='button' class='checkBtn btn btn-success btn-xs'><i class=' glyphicon glyphicon-check'></i></button>";
         var pencilBtn = "<button id='"+roleId+"' type='button' class='btn btn-primary btn-xs pencilBtn'><i class=' glyphicon glyphicon-pencil'></i></button>";
         var removeBtn = "<button id='"+roleId+"' type='button' class='btn btn-danger btn-xs removeBtn'><i class=' glyphicon glyphicon-remove'></i></button>";
         var buttonTd = "<td>"+checkBtn+" "+pencilBtn+" "+removeBtn+"</td>";
@@ -142,4 +142,79 @@ function paginationCallBack(pageIndex,jQuery) {
     generatePage();
     // 取消页码超链接的默认行为
     return false;
+}
+
+
+function buildAuthTree() {
+    var ajaxResult = $.ajax({
+        url:'assign/to/get/all/auth',
+        type:'post',
+        dataType: 'json',
+        async: false
+    });
+
+    console.log(ajaxResult);
+    // 获取状态码
+    var status = ajaxResult.status;
+    if (status != 200) {
+        // 如果不为200 则请求失败
+        layer.msg("状态码："+status+",信息："+ajaxResult.statusText);
+        return null;
+    }
+
+    // 请求成功
+    var zNodes = ajaxResult.responseJSON.data;
+
+    var settings = {
+        data:{
+            key:{
+                name:'title'
+            },
+            simpleData: {
+                enable:true,
+                pIdKey: 'categoryId'
+            },
+        },
+        check: {
+            enable: true
+        }
+    };
+
+    // 初始化树形结构
+    $.fn.zTree.init($("#treeDemo"), settings, zNodes);
+
+    // 展开所有的节点
+    var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+    treeObj.expandAll(true);
+
+    var roleId = window.roleId;
+    console.log("roleID = "+roleId)
+
+    ajaxResult = $.ajax({
+        url:'assign/to/get/auth/for/role',
+        type:'post',
+        data:{
+            roleId:roleId
+        },
+        dataType:'json',
+        async:false
+    });
+
+    if (ajaxResult.status != 200) {//请求失败
+        layer.msg("请求失败！错误码："+ajaxResult.status+",错误信息："+ajaxResult.statusText);
+    }
+
+    // 得到节点Id的集合
+    var authIdList = ajaxResult.responseJSON.data;
+
+    // 遍历集合
+    for (var i = 0 ; i < authIdList.length ; i ++) {
+        // 获取到authid
+        // 根据authid找到节点
+        var authId = authIdList[i];
+        var node = treeObj.getNodeByParam("id", authId, null);
+        // 选中节点
+        treeObj.checkNode(node, true, false);
+    }
+
 }

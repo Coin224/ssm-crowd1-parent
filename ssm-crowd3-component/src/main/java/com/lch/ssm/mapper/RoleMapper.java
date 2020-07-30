@@ -30,4 +30,12 @@ public interface RoleMapper {
     int updateByPrimaryKey(Role record);
 
     List<Role> selectRoleByKeyword(String keyword);
+
+    List<Role> findAssignedRoles(Integer adminId);
+
+    List<Role> findUnAssignedRoles(Integer adminId);
+
+    void deleteOldRoleByAdminId(Integer adminId);
+
+    void saveNewRoleToAdmin(@Param("adminId") Integer adminId, @Param("roleIdList") List<Integer> roleIdList);
 }

@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
-<%@include file="/WEB-INF/include-head.jsp" %>
+<%@include file="/WEB-INF/include/include-head.jsp" %>
 <link rel="stylesheet" href="css/pagination.css" />
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
+<link rel="stylesheet" href="ztree/zTreeStyle.css">
+<script type="text/javascript" src="ztree/jquery.ztree.all-3.5.min.js"></script>
 <script type="text/javascript" src="/crowd/my-role.js" charset="UTF-8"></script>
 <script type="text/javascript">
     $(function () {
@@ -184,13 +186,69 @@
             $("#confirmModal").modal("hide");
         });
 
+        // 显示权限的树形结构
+        $("#rolePageBody").on("click",".checkBtn",function () {
+            window.roleId = this.id;
+            // 打开模态框
+            $("#roleAuthModal").modal("show");
+            // 展示树形结构
+            buildAuthTree();
+        });
+
+        // 绑定单击响应函数 给角色绑定权限
+        $("#saveAuthForRole").click(function () {
+            // 获取数据
+            var roleId = window.roleId;
+            // 被选中的节点
+            var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+            var nodes = treeObj.getCheckedNodes(true);
+
+            // 遍历nodes 获取id 把id装到数组中
+            var authIdArray = [];
+            for (var i = 0 ; i < nodes.length ; i ++) {
+                var node = nodes[i];
+
+                var authId = node.id;
+
+                authIdArray.push(authId);
+            }
+            var requestBody = {
+                roleId:[roleId],
+                authIdArray:authIdArray
+            };
+
+            requestBody = JSON.stringify(requestBody);
+            $.ajax({
+                url:'assign/do/save/auth/for/role',
+                type:'post',
+                data:requestBody,
+                contentType: 'application/json',
+                dataType:'json',
+                success:function (response) {
+                    var result = response.operationResult;
+                    if (result == "SUCCESS") {
+                        layer.msg("给角色添加权限成功！！！");
+                        // 重新生成树
+                        buildAuthTree();
+                    } else {
+                        layer.msg("给角色添加权限失败！！！"+response.operationMessage)
+                    }
+                },
+                error:function (response) {
+                    layer.msg("状态码："+response.status+",状态信息： "+response.statusMessage);
+                }
+            });
+            $("#roleAuthModal").modal("hide");
+
+        });
+
     });
 </script>
 <body>
-<%@include file="/WEB-INF/include-nav.jsp" %>
+<%@include file="/WEB-INF/include/include-nav.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@include file="/WEB-INF/include-sidebar.jsp" %>
+        <%@include file="/WEB-INF/include/include-sidebar.jsp" %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -236,9 +294,10 @@
         </div>
     </div>
 </div>
-<%@include file="/WEB-INF/include-role-add.jsp"%>
-<%@include file="/WEB-INF/include-role-edit.jsp"%>
-<%@include file="/WEB-INF/include-role-confirm.jsp"%>
+<%@include file="/WEB-INF/include/include-role-add.jsp"%>
+<%@include file="/WEB-INF/include/include-role-edit.jsp"%>
+<%@include file="/WEB-INF/include/include-role-confirm.jsp"%>
+<%@include file="/WEB-INF/include/modal-auth-confirm.jsp"%>
 </body>
 </html>
 

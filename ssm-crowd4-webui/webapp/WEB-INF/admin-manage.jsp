@@ -9,7 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
-<%@include file="/WEB-INF/include-head.jsp" %>
+<%@include file="/WEB-INF/include/include-head.jsp" %>
 <link rel="stylesheet" href="css/pagination.css" />
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
 <script type="text/javascript">
@@ -19,7 +19,7 @@
     function initPagination() {
         // 获取分页数据中的总记录数
         var totalRecord = ${requestScope.pageInfo.total};
-
+        console.log(totalRecord)
         // 声明 Pagination 设置属性的 JSON 对象
         var properties = {
             num_edge_entries: 3, // 边缘页数
@@ -44,10 +44,10 @@
     }
 </script>
 <body>
-<%@include file="/WEB-INF/include-nav.jsp" %>
+<%@include file="/WEB-INF/include/include-nav.jsp" %>
 <div class="container-fluid">
     <div class="row">
-        <%@include file="/WEB-INF/include-sidebar.jsp" %>
+        <%@include file="/WEB-INF/include/include-sidebar.jsp" %>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
             <div class="panel panel-default">
@@ -96,7 +96,8 @@
                                         <td>${admin.userName }</td>
                                         <td>${admin.email }</td>
                                         <td>
-                                            <button type="button" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>
+<%--                                            <button type="button" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></button>--%>
+                                            <a class="btn btn-success btn-xs" href="/assign/role/page?adminId=${admin.id }&pageNum=${requestScope.pageInfo.pageNum }&keyword=${param.keyword}"><i class=" glyphicon glyphicon-check"></i></a>
 <%--                                            <button type="button" class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></button>--%>
                                             <a class="btn btn-primary btn-xs" href="/admin/to/update?id=${admin.id }&pageNum=${requestScope.pageInfo.pageNum }&keyword=${param.keyword}"><i class=" glyphicon glyphicon-pencil"></i></a>
                                             <a class="btn btn-danger btn-xs" href="/admin/remove/${admin.id}/${requestScope.pageInfo.pageNum }/${param.keyword}.do"><i class=" glyphicon glyphicon-remove"></i></a>
