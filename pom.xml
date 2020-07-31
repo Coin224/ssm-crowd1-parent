@@ -16,9 +16,9 @@
 
     <properties>
         <!-- 声明属性，对 Spring 的版本进行统一管理 -->
-        <lch.spring.version>5.2.6.RELEASE</lch.spring.version>
+        <lch.spring.version>4.3.21.RELEASE</lch.spring.version>
         <!-- 声明属性，对 SpringSecurity 的版本进行统一管理 -->
-        <lch.spring.security.version>5.3.2.RELEASE</lch.spring.security.version>
+        <lch.spring.security.version>4.2.10.RELEASE</lch.spring.security.version>
     </properties>
 
     <dependencyManagement>
@@ -66,6 +66,7 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-test</artifactId>
                 <version>${lch.spring.version}</version>
+                <scope>test</scope>
             </dependency>
 
             <!-- junit 测试 -->
@@ -131,7 +132,7 @@
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>2.5</version>
-                <scope>provided</scope>
+                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>javax.servlet.jsp</groupId>
@@ -152,6 +153,45 @@
                 <artifactId>pagehelper</artifactId>
                 <version>4.0.0</version>
             </dependency>
+
+
+
+            <!--spring security依赖-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.security</groupId>-->
+<!--                <artifactId>spring-security-web</artifactId>-->
+<!--                <version>${lch.spring.security.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.security</groupId>-->
+<!--                <artifactId>spring-security-config</artifactId>-->
+<!--                <version>${lch.spring.security.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.security</groupId>-->
+<!--                <artifactId>spring-security-taglibs</artifactId>-->
+<!--                <version>${lch.spring.security.version}</version>-->
+<!--            </dependency>-->
+
+            <!-- SpringSecurity 对 Web 应用进行权限管理 -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${lch.spring.security.version}</version>
+            </dependency>
+            <!-- SpringSecurity 配置 -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${lch.spring.security.version}</version>
+            </dependency>
+            <!-- SpringSecurity 标签库 -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${lch.spring.security.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

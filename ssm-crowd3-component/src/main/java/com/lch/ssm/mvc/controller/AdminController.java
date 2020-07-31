@@ -60,13 +60,13 @@ public class AdminController {
                               @PathVariable("pageNum") Integer pageNum,
                               @PathVariable("keyword") String keyword,
                               HttpSession session) {
-        Admin loginAdmin = (Admin) session.getAttribute(Constant.LOGIN_ADMIN);
-        Integer adminId = loginAdmin.getId();
-        System.out.println(id+"========="+adminId);
-        if (id == adminId) {
-            //如果id相同、抛出异常
-            throw new RuntimeException("不准删自己！！！");
-        }
+//        Admin loginAdmin = (Admin) session.getAttribute(Constant.LOGIN_ADMIN);
+//        Integer adminId = loginAdmin.getId();
+//        System.out.println(id+"========="+adminId);
+//        if (id == adminId) {
+//            //如果id相同、抛出异常
+//            throw new RuntimeException("不准删自己！！！");
+//        }
         adminService.remove(id);
         return "redirect:/admin/manage?pageNum="+pageNum+"&keyword="+keyword;
     }

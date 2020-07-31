@@ -77,5 +77,6 @@ index.jsp
 
 <button id="sendThree" >send arr three</button>
 <button id="btn1">点我</button>
+<a href="/security/admin/to/loginpage">点我去登录</a>
 </body>
 </html>

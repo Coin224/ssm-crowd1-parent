@@ -12,6 +12,7 @@ import com.lch.ssm.util.Constant;
 import com.lch.ssm.util.CrowdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -50,11 +51,27 @@ public class AdminServiceImpl implements AdminService {
         return admin;
     }
 
+    @Override
+    public Admin selectAdminByLoginAcct(String loginAcct) {
+        AdminExample adminExample = new AdminExample();
+        AdminExample.Criteria criteria = adminExample.createCriteria();
+        criteria.andLoginAcctEqualTo(loginAcct);
+        List<Admin> adminList = adminMapper.selectByExample(adminExample);
+
+        return adminList.get(0);
+    }
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
+
     public int saveAdmin(Admin admin) {
 
         // 1.密码加密
         String userPswd = admin.getUserPswd();
-        userPswd = CrowdUtil.MD5(userPswd);
+        // MD5加密方
+//        userPswd = CrowdUtil.MD5(userPswd);
+        userPswd = passwordEncoder.encode(userPswd);
         admin.setUserPswd(userPswd);
 
         // 2.创建时间

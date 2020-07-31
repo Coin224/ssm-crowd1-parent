@@ -43,4 +43,9 @@ public class AuthServiceImpl implements AuthService {
             authMapper.doSaveAuthForRole(roleId,authIdArray);
         }
     }
+
+    @Override
+    public List<String> selectAuthNameByAdminId(Integer adminId) {
+        return authMapper.selectAuthNameByAdminId(adminId);
+    }
 }

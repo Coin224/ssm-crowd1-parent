@@ -5,6 +5,7 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+
     <context:component-scan base-package="com.lch.ssm.mvc">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
@@ -33,22 +34,22 @@
 
 
     <!--配置视图跳转-->
-    <mvc:view-controller path="/admin/loginpage" view-name="admin-login"/>
-    <mvc:view-controller path="/admin/mainpage" view-name="admin-main"/>
+    <mvc:view-controller path="/security/admin/to/loginpage" view-name="admin-login"/>
+    <mvc:view-controller path="/security/admin/to/mainpage" view-name="admin-main"/>
     <mvc:view-controller path="/admin/add" view-name="admin-add"/>
     <mvc:view-controller path="/role/to/page" view-name="role-manage"/>
     <mvc:view-controller path="/menu/to/page" view-name="menu-manage"/>
 
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <!--配置需要拦截的路径-->
-            <mvc:mapping path="/**"/>
-            <!--配置不需要拦截的路径-->
-            <mvc:exclude-mapping path="/admin/loginpage"/>
-            <mvc:exclude-mapping path="/admin/login"/>
-            <mvc:exclude-mapping path="/admin/logout"/>
-            <!--绑定拦截器-->
-            <bean id="loginIntercepter" class="com.lch.ssm.mvc.intercepter.LoginIntercepter"/>
-        </mvc:interceptor>
-    </mvc:interceptors>
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            &lt;!&ndash;配置需要拦截的路径&ndash;&gt;-->
+<!--            <mvc:mapping path="/**"/>-->
+<!--            &lt;!&ndash;配置不需要拦截的路径&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/admin/loginpage"/>-->
+<!--            <mvc:exclude-mapping path="/admin/login"/>-->
+<!--            <mvc:exclude-mapping path="/admin/logout"/>-->
+<!--            &lt;!&ndash;绑定拦截器&ndash;&gt;-->
+<!--            <bean id="loginIntercepter" class="com.lch.ssm.mvc.intercepter.LoginIntercepter"/>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
 </beans>

@@ -32,15 +32,17 @@
 
 <div class="container">
 
-    <form action="admin/login" method="post" class="form-signin" role="form">
+    <form action="security/admin/do/login" method="post" class="form-signin" role="form">
         <h2 class="form-signin-heading"><i class="glyphicon glyphicon-log-in"></i> 管理员登录</h2>
-        <p>${requestScope.exception.message}</p>
+<%--        <p>${requestScope.exception.message}</p>--%>
+        <p>${requestScope.exception.message }</p>
+        <p>${SPRING_SECURITY_LAST_EXCEPTION.message }</p>
         <div class="form-group has-success has-feedback">
-            <input type="text" class="form-control" name="loginAcct" value="lch" id="inputSuccess1" placeholder="请输入登录账号" autofocus>
+            <input type="text" class="form-control" name="loginAcct" value="lch1" id="inputSuccess1" placeholder="请输入登录账号" autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
         </div>
         <div class="form-group has-success has-feedback">
-            <input type="text" class="form-control" name="loginPass" value="123" id="inputSuccess2" placeholder="请输入登录密码" style="margin-top:10px;">
+            <input type="text" class="form-control" name="userPswd" value="123" id="inputSuccess2" placeholder="请输入登录密码" style="margin-top:10px;">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <button type="submit" class="btn btn-lg btn-success btn-block">登录</button>

@@ -38,18 +38,22 @@
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.2" />
           <element id="library" level="project" name="Maven: com.github.pagehelper:pagehelper:4.0.0" />
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:0.9.1" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-core:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jcl:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-test:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-web:5.2.6.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:5.2.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:4.2.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.2.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:4.2.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.2.10.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.21.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.21.RELEASE" />
         </element>
       </element>
       <element id="directory" name="META-INF">

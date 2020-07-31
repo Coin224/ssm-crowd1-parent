@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -30,18 +29,16 @@ public class TestMain {
 
     @Test
     public void t1() {
-        Admin admin = new Admin(0,"bill","123","比尔","bill@qq.com",null);
+        Admin admin = new Admin(0,"zxx","123","比尔","bill@qq.com",null);
         int count = adminMapper.insert(admin);
         System.out.println("改变的行数为："+count);
     }
 
     @Test
     public void t2() {
-        String s = CrowdUtil.MD5("123");
-        System.out.println(s);
-        //Admin admin = new Admin(1,"lch",s,"李春宏","coinvv@qq.com",null);
-        //int count = adminService.saveAdmin(admin);
-        //System.out.println("改变的行数为："+count);
+        Admin admin = new Admin(null,"lch1","123","李春宏","coinvv@qq.com",null);
+        int count = adminService.saveAdmin(admin);
+        System.out.println("改变的行数为："+count);
     }
 
     @Test
@@ -83,4 +80,12 @@ public class TestMain {
             roleMapper.insert(role);
         }
     }
+
+    @Test
+    public void t8() {
+        Admin admin = adminService.selectAdminByLoginAcct("lch");
+        System.out.println(admin);
+    }
+
+
 }
