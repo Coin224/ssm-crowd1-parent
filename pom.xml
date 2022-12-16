@@ -16,7 +16,7 @@
 
     <properties>
         <!-- 声明属性，对 Spring 的版本进行统一管理 -->
-        <lch.spring.version>4.3.21.RELEASE</lch.spring.version>
+        <lch.spring.version>5.2.20.RELEASE</lch.spring.version>
         <!-- 声明属性，对 SpringSecurity 的版本进行统一管理 -->
         <lch.spring.security.version>4.2.10.RELEASE</lch.spring.security.version>
     </properties>
